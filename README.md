@@ -16,6 +16,7 @@ Where possible, I'll be drawing knowledge from:
 - [Hexagonal Architecture](https://fideloper.com/hexagonal-architecture)
 - [Domain-Driven Design in PHP](https://leanpub.com/ddd-in-php)
 - [Microservice Architecture](https://microservices.io/)
+- [Build APIs You Won't Hate](https://apisyouwonthate.com/books/build-apis-you-wont-hate.html)
 
 Others will be added as I explore different areas, and I'm happy to take recommendations on reading material.
 
