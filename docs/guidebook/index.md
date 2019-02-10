@@ -2,8 +2,8 @@
 
 This guidebook follows the pattern laid out in [Software Architecture for Developers](https://softwarearchitecturefordevelopers.com/), providing documentation of varying levels of details in a structured format. 
 
-1. Context: What is this all about? 
-2. Functional Overview: What does the system do?
+1. [Context](./01-context/index.md): What is this all about? 
+2. [Functional Overview](./02-functional-overview/index.md): What does the system do?
 3. Quality Attributes: Are there any significant non-functional requirements?
 4. Constraints: Are there any significant constraints?
 5. Principles: What design and development principles have been adopted?
