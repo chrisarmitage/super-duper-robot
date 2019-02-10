@@ -6,7 +6,7 @@ This guidebook follows the pattern laid out in [Software Architecture for Develo
 2. [Functional Overview](./02-functional-overview/index.md): What does the system do?
 3. [Quality Attributes](./03-quality-attributes/index.md): Are there any significant non-functional requirements?
 4. [Constraints](./04-constraints/index.md): Are there any significant constraints?
-5. Principles: What design and development principles have been adopted?
+5. [Principles](./05-principles/index.md): What design and development principles have been adopted?
 6. Software Architecture: What does the big picture look like and how is the system structured?
 7. External Interfaces: What are the external system interfaces?
 8. Code: Are there any implementation details that need explaining?
