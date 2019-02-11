@@ -10,7 +10,7 @@ This guidebook follows the pattern laid out in [Software Architecture for Develo
 6. Software Architecture: What does the big picture look like and how is the system structured?
 7. External Interfaces: What are the external system interfaces?
 8. Code: Are there any implementation details that need explaining?
-9. Data: What does the data model look like and where is it being stored?
+9. [Data](./09-data/index.md): What does the data model look like and where is it being stored?
 10. Infrastructure Architecture: What does the target deployment environment look like?
 11. Deployment: What is the mapping between software and infrastructure?
 12. Operation and Support: How will people operate and support the system?

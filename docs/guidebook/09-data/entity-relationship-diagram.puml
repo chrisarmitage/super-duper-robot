@@ -1,0 +1,79 @@
+@startuml
+
+center header
+Basic Entity-Relationship Diagram for SDR
+endheader
+
+hide circle
+hide empty members
+
+!define pk(x) x <b>(PK)</b>
+!define fk(x) x <b>(FK)</b>
+
+' ##### Customer Aggregate
+
+package "Customer Aggregate" {
+    entity Customer {
+        pk(id)
+        --
+        Name
+        Email
+    }
+
+    entity Address {
+        fk(Customer)
+        Name
+        Street
+        Town
+        Postcode
+    }
+}
+Customer ||--o{ Address
+
+
+
+
+' ##### Order Aggregate
+
+package "Order Aggregate" {
+    entity Order {
+        pk(id)
+        fk(Customer)
+        Total
+    }
+
+    entity OrderLine {
+        fk(Order)
+        fk(Sku)
+        Quantity
+        Price
+    }
+}
+
+Order ||--|{ OrderLine
+
+
+
+
+
+' ##### Product Aggregate
+
+package "Product Aggregate" {
+    entity Sku {
+        pk(code)
+        Title
+        Image
+        Price
+    }
+}
+
+
+
+
+' ##### Aggregate Links
+
+Customer ||-o{ Order
+
+OrderLine }o-|| Sku
+
+@enduml
