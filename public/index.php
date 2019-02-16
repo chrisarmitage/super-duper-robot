@@ -18,6 +18,13 @@ $container->share(new RestActionRouter(null));
 
 $container->alias(\Framework\Router::class, RestActionRouter::class);
 
+/**
+ * Initialise DB connection
+ */
+$dbh = new \PDO('sqlite:' . __DIR__ . '/../build/db.sqlite');
+$dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+$container->share($dbh);
+
 $app = $container->make(App::class);
 
 $response = $app->processRequest($request);
