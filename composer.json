@@ -2,7 +2,7 @@
   "name": "chrisarmitage/super-duper-robot",
   "require": {
     "php": ">=7.2",
-    "ext-pdo": "*".
+    "ext-pdo": "*",
     "chrisarmitage/framework": "dev-master"
   },
   "minimum-stability": "dev",
