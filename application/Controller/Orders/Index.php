@@ -26,8 +26,16 @@ class Index implements Controller
     {
         $orders = $this->orderReadRepository->getAll();
 
+        $records = [];
+        foreach ($orders as $order) {
+            $records[] = (object) [
+                'id' => $order->getId(),
+                'state' => $order->getState(),
+            ];
+        }
+
         return [
-            'orders' => $orders,
+            'orders' => $records,
         ];
     }
 }

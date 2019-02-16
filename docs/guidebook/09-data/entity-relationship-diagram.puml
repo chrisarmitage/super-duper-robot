@@ -39,6 +39,7 @@ package "Order Aggregate" {
     entity Order {
         pk(id)
         fk(Customer)
+        State
         Total
     }
 

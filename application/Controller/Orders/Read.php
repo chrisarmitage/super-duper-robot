@@ -34,8 +34,13 @@ class Read implements Controller
     {
         $order = $this->orderReadRepository->get($this->route->getResourceId());
 
+        $record = (object) [
+            'id' => $order->getId(),
+            'state' => $order->getState(),
+        ];
+
         return [
-            'order' => $order,
+            'order' => $record,
         ];
     }
 }

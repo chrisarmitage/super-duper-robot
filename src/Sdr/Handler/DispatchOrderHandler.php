@@ -22,11 +22,8 @@ class DispatchOrderHandler
 
     public function handle(DispatchOrderCommand $command) : void
     {
-        $order = [
-            'id' => $command->getOrderId(),
-            'state' => 'DISPATCHED',
-        ];
-
+        $order = $this->orderWriteRepository->get($command->getOrderId());
+        $order->changeState('DISPATCHED');
         $this->orderWriteRepository->update($order);
     }
 }
