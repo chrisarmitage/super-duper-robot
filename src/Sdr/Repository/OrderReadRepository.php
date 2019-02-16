@@ -2,6 +2,8 @@
 
 namespace Sdr\Repository;
 
+use Sdr\Domain\Order;
+
 class OrderReadRepository
 {
     /**
@@ -18,7 +20,10 @@ class OrderReadRepository
         $this->pdo = $pdo;
     }
 
-    public function getAll()
+    /**
+     * @return Order[]
+     */
+    public function getAll() : array
     {
         $sth = $this->pdo->prepare('SELECT * FROM orders');
         $sth->execute();
@@ -26,25 +31,33 @@ class OrderReadRepository
 
         $orders = [];
         foreach ($rows as $row) {
-            $orders[] = (object) [
-                'id' => $row['id'],
-                'state' => $row['state'],
-            ];
+            $orders[] = new Order(
+                $row['id'],
+                null,
+                $row['state'],
+                0
+            );
         }
 
         return $orders;
     }
 
-    public function get($orderId)
+    /**
+     * @param $orderId
+     * @return Order
+     */
+    public function get($orderId) : Order
     {
         $sth = $this->pdo->prepare('SELECT * FROM orders WHERE id = :id LIMIT 1');
         $sth->execute(['id' => $orderId]);
         $row = $sth->fetch(\PDO::FETCH_ASSOC);
 
-        $order = (object) [
-            'id' => $row['id'],
-            'state' => $row['state'],
-        ];
+        $order = new Order(
+            $row['id'],
+            null,
+            $row['state'],
+            0
+        );
 
         return $order;
     }
