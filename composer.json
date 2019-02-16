@@ -1,0 +1,21 @@
+{
+  "name": "chrisarmitage/super-duper-robot",
+  "require": {
+    "php": ">=7.2",
+    "ext-pdo": "*".
+    "chrisarmitage/framework": "dev-master"
+  },
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/chrisarmitage/framework"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Application\\": "application/",
+      "Sdr\\": "src/Sdr"
+    }
+  }
+}
