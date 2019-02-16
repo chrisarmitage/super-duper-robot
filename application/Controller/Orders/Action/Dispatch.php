@@ -6,37 +6,36 @@ namespace Application\Controller\Orders\Action;
 
 use Framework\Controller;
 use Framework\Router\RestRoute;
-use Sdr\Repository\OrderWriteRepository;
+use Sdr\Command\DispatchOrderCommand;
+use Sdr\CommandBus;
 
 class Dispatch implements Controller
 {
-    /**
-     * @var OrderWriteRepository
-     */
-    protected $orderWriteRepository;
-
     /**
      * @var RestRoute
      */
     protected $route;
 
     /**
-     * @param OrderWriteRepository $orderReadRepository
-     * @param RestRoute            $route
+     * @var CommandBus
      */
-    public function __construct(OrderWriteRepository $orderReadRepository, RestRoute $route)
+    protected $commandBus;
+
+    /**
+     * @param RestRoute  $route
+     * @param CommandBus $commandBus
+     */
+    public function __construct(RestRoute $route, CommandBus $commandBus)
     {
-        $this->orderWriteRepository = $orderReadRepository;
         $this->route = $route;
+        $this->commandBus = $commandBus;
     }
 
     public function dispatch()
     {
-        $order = [
-            'id' => $this->route->getResourceId(),
-            'state' => 'DISPATCHED',
-        ];
-        $this->orderWriteRepository->update($order);
+        $this->commandBus->execute(
+            new DispatchOrderCommand((int) $this->route->getResourceId())
+        );
 
         return true;
     }
