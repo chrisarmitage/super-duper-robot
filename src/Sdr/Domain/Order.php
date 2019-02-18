@@ -5,7 +5,7 @@ namespace Sdr\Domain;
 class Order
 {
     /**
-     * @var int
+     * @var OrderId
      */
     protected $id;
 
@@ -26,12 +26,12 @@ class Order
 
     /**
      * Order constructor.
-     * @param int      $id
+     * @param OrderId  $id
      * @param int|null $customerId
      * @param string   $state
      * @param int      $total
      */
-    public function __construct(int $id, ?int $customerId, string $state, int $total)
+    public function __construct(OrderId $id, ?int $customerId, string $state, int $total)
     {
         $this->id = $id;
         $this->customerId = $customerId;
@@ -40,9 +40,9 @@ class Order
     }
 
     /**
-     * @return int
+     * @return OrderId
      */
-    public function getId(): int
+    public function getId(): OrderId
     {
         return $this->id;
     }
