@@ -6,6 +6,7 @@ namespace Application\Controller\Orders;
 
 use Framework\Controller;
 use Framework\Router\RestRoute;
+use Sdr\Domain\OrderId;
 use Sdr\Repository\OrderReadRepository;
 
 class Read implements Controller
@@ -32,10 +33,12 @@ class Read implements Controller
 
     public function dispatch()
     {
-        $order = $this->orderReadRepository->get($this->route->getResourceId());
+        $order = $this->orderReadRepository->get(
+            OrderId::create($this->route->getResourceId())
+        );
 
         $record = (object) [
-            'id' => $order->getId(),
+            'id' => (string) $order->getId(),
             'state' => $order->getState(),
         ];
 
