@@ -45,17 +45,17 @@ class OrderReadRepository
     }
 
     /**
-     * @param $orderId
+     * @param OrderId $orderId
      * @return Order
      */
-    public function get($orderId) : Order
+    public function get(OrderId $orderId) : Order
     {
         $sth = $this->pdo->prepare('SELECT * FROM orders WHERE id = :id LIMIT 1');
-        $sth->execute(['id' => $orderId]);
+        $sth->execute(['id' => (string) $orderId]);
         $row = $sth->fetch(\PDO::FETCH_ASSOC);
 
         $order = new Order(
-            $row['id'],
+            OrderId::create($row['id']),
             null,
             $row['state'],
             0
