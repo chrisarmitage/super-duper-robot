@@ -29,7 +29,7 @@ class Index implements Controller
         $records = [];
         foreach ($orders as $order) {
             $records[] = (object) [
-                'id' => $order->getId(),
+                'id' => (string) $order->getId(),
                 'state' => $order->getState(),
             ];
         }
