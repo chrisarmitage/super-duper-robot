@@ -3,6 +3,7 @@
 namespace Sdr\Repository;
 
 use Sdr\Domain\Order;
+use Sdr\Domain\OrderId;
 
 class OrderReadRepository
 {
@@ -22,6 +23,7 @@ class OrderReadRepository
 
     /**
      * @return Order[]
+     * @throws \Exception
      */
     public function getAll() : array
     {
@@ -32,10 +34,10 @@ class OrderReadRepository
         $orders = [];
         foreach ($rows as $row) {
             $orders[] = new Order(
-                $row['id'],
-                null,
+                OrderId::create($row['id']),
+                $row['customer_id'],
                 $row['state'],
-                0
+                $row['total']
             );
         }
 
