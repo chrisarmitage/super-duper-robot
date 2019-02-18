@@ -3,9 +3,11 @@
   "require": {
     "php": ">=7.2",
     "ext-pdo": "*",
-    "chrisarmitage/framework": "dev-master"
+    "chrisarmitage/framework": "dev-master",
+    "doctrine/orm": "^2.6",
+    "ramsey/uuid": "^3.8"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "repositories": [
     {
       "type": "vcs",
