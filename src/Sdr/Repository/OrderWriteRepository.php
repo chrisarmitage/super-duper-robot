@@ -21,6 +21,11 @@ class OrderWriteRepository
         $this->entityManager = $entityManager;
     }
 
+    public function nextIdentity() : Orderid
+    {
+        return OrderId::create(null);
+    }
+
     /**
      * @param OrderId $orderId
      * @return Order
@@ -30,6 +35,12 @@ class OrderWriteRepository
         $order = $this->entityManager->find(Order::class, (string) $orderId);
 
         return $order;
+    }
+
+    public function add(Order $order) : void
+    {
+        $this->entityManager->persist($order);
+        $this->entityManager->flush();
     }
 
     public function update(Order $order) : void
