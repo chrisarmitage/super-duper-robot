@@ -8,6 +8,7 @@ use Framework\Controller;
 use Framework\Router\RestRoute;
 use Sdr\Command\DispatchOrderCommand;
 use Sdr\CommandBus;
+use Sdr\Domain\OrderId;
 
 class Dispatch implements Controller
 {
@@ -34,7 +35,9 @@ class Dispatch implements Controller
     public function dispatch()
     {
         $this->commandBus->execute(
-            new DispatchOrderCommand((int) $this->route->getResourceId())
+            new DispatchOrderCommand(
+                OrderId::create($this->route->getResourceId())
+            )
         );
 
         return true;
