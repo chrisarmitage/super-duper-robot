@@ -2,52 +2,39 @@
 
 namespace Sdr\Repository;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Sdr\Domain\Order;
+use Sdr\Domain\OrderId;
 
 class OrderWriteRepository
 {
     /**
-     * @var \PDO
+     * @var EntityManagerInterface
      */
-    protected $pdo;
+    protected $entityManager;
 
     /**
-     * OrderReadRepository constructor.
-     * @param \PDO $pdo
+     * @param EntityManagerInterface $entityManager
      */
-    public function __construct(\PDO $pdo)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->pdo = $pdo;
+        $this->entityManager = $entityManager;
     }
 
     /**
-     * @param $orderId
+     * @param OrderId $orderId
      * @return Order
      */
-    public function get($orderId) : Order
+    public function get(OrderId $orderId) : Order
     {
-        $sth = $this->pdo->prepare('SELECT * FROM orders WHERE id = :id LIMIT 1');
-        $sth->execute(['id' => $orderId]);
-        $row = $sth->fetch(\PDO::FETCH_ASSOC);
-
-        $order = new Order(
-            $row['id'],
-            null,
-            $row['state'],
-            0
-        );
+        $order = $this->entityManager->find(Order::class, (string) $orderId);
 
         return $order;
     }
 
     public function update(Order $order) : void
     {
-        $sth = $this->pdo->prepare('UPDATE orders SET state = :state WHERE id = :id');
-        $sth->execute(
-            [
-                'id' => $order->getId(),
-                'state' => $order->getState(),
-            ]
-        );
+        $this->entityManager->persist($order);
+        $this->entityManager->flush();
     }
 }
