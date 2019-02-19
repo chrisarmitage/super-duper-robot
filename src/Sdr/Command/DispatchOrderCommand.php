@@ -2,25 +2,27 @@
 
 namespace Sdr\Command;
 
+use Sdr\Domain\OrderId;
+
 class DispatchOrderCommand implements CommandInterface
 {
     /**
-     * @var int
+     * @var OrderId
      */
     protected $orderId;
 
     /**
-     * @param $orderId
+     * @param OrderId $orderId
      */
-    public function __construct(int $orderId)
+    public function __construct(OrderId $orderId)
     {
         $this->orderId = $orderId;
     }
 
     /**
-     * @return int
+     * @return OrderId
      */
-    public function getOrderId() : int
+    public function getOrderId() : OrderId
     {
         return $this->orderId;
     }
