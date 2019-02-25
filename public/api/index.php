@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../../vendor/autoload.php';
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\EntityManager;
@@ -24,7 +24,7 @@ $container->alias(\Framework\Router::class, RestActionRouter::class);
 /**
  * Initialise DB connection
  */
-$dbh = new \PDO('sqlite:' . __DIR__ . '/../build/db.sqlite');
+$dbh = new \PDO('sqlite:' . __DIR__ . '/../../build/db.sqlite');
 $dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 $container->share($dbh);
 
@@ -37,13 +37,13 @@ Type::addType(
 );
 
 $config = Setup::createXMLMetadataConfiguration(
-    [ __DIR__ . '/../src/Sdr/Domain/doctrine-entities'],
+    [ __DIR__ . '/../../src/Sdr/Domain/doctrine-entities'],
     false
 );
 $entityManager = EntityManager::create(
     [
         'driver' => 'pdo_sqlite',
-        'path' =>  __DIR__ . '/../build/db.sqlite',
+        'path' =>  __DIR__ . '/../../build/db.sqlite',
     ],
     $config
 );
