@@ -1,14 +1,20 @@
-<a href="/orders">View all</a>
+{% extends 'base.twig' %}
 
-<table>
-    <tr>
-        <td>ID</td>
-        <td>{{ order.id }}</td>
-    </tr>
-    <tr>
-        <td>State</td>
-        <td>{{ order.state }}</td>
-    </tr>
-</table>
+{% block title %}View Order {{ order.id }}{% endblock %}
 
-<a href="/orders/view/{{ order.id }}/dispatch">Dispatch</a>
+{% block content %}
+    <a href="/orders" class="waves-effect waves-light btn-flat">View all</a>
+    <a href="/orders/view/{{ order.id }}/dispatch" class="waves-effect waves-light btn">Dispatch</a>
+
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>{{ order.id }}</td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>{{ order.state }}</td>
+        </tr>
+    </table>
+
+{% endblock %}
