@@ -5,7 +5,8 @@
     "ext-pdo": "*",
     "chrisarmitage/framework": "dev-master",
     "doctrine/orm": "^2.6",
-    "ramsey/uuid": "^3.8"
+    "ramsey/uuid": "^3.8",
+    "twig/twig": "^2.6"
   },
   "minimum-stability": "stable",
   "repositories": [

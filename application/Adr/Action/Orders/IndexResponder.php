@@ -2,24 +2,29 @@
 
 namespace Application\Adr\Action\Orders;
 
-use Sdr\Domain\Order;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
 class IndexResponder
 {
+    /**
+     * @var Environment
+     */
+    protected $twig;
+
+    /**
+     * IndexResponder constructor.
+     * @param Environment $twig
+     */
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     public function respond($payload) : Response
     {
-        $body = '<table>';
-        /** @var Order $order */
-        foreach ($payload as $order) {
-            $body .= '<tr><td><a href="/orders/view/' . $order->getId() . '">' . $order->getId() . '</a></td><td>' . $order->getState() . '</td></tr>';
-        }
-        $body .= '</table>';
-
-        $body .= '<a href="/orders/create">New Order</a>';
-
         return new Response(
-            $body,
+            $this->twig->render('orders/index.twig', ['orders' => $payload]),
             Response::HTTP_OK,
             [
                 'content-type' => 'text/html',

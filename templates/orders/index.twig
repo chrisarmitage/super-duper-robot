@@ -1,0 +1,7 @@
+<table>
+    {% for order in orders %}
+    <tr><td><a href="/orders/view/{{ order.id }}">{{ order.id }}</a></td><td>{{ order.state }}</td></tr>
+    {% endfor %}
+</table>
+
+<a href="/orders/create">New Order</a>
