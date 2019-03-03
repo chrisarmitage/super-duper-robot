@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chrisarmitage/framework.git",
-                "reference": "dbad2cd4675048e1a08eb772e91ae60e17921200"
+                "reference": "28cc6244cfba6f15d4f6e70da20a53b38d9690cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chrisarmitage/framework/zipball/dbad2cd4675048e1a08eb772e91ae60e17921200",
-                "reference": "dbad2cd4675048e1a08eb772e91ae60e17921200",
+                "url": "https://api.github.com/repos/chrisarmitage/framework/zipball/28cc6244cfba6f15d4f6e70da20a53b38d9690cb",
+                "reference": "28cc6244cfba6f15d4f6e70da20a53b38d9690cb",
                 "shasum": ""
             },
             "require": {
@@ -26,6 +26,7 @@
                 "symfony/http-foundation": "^3.2"
             },
             "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "^7.0",
                 "roave/security-advisories": "dev-master"
             },
@@ -45,7 +46,7 @@
                 "source": "https://github.com/chrisarmitage/framework/tree/master",
                 "issues": "https://github.com/chrisarmitage/framework/issues"
             },
-            "time": "2019-02-14T14:06:13+00:00"
+            "time": "2019-03-03T21:45:47+00:00"
         },
         {
             "name": "doctrine/annotations",
