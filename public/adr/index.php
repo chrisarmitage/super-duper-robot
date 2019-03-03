@@ -57,6 +57,17 @@ $entityManager = EntityManager::create(
 $container->share($entityManager);
 $container->alias(\Doctrine\ORM\EntityManagerInterface::class, EntityManager::class);
 
+/**
+ * Initialise Twig
+ */
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../templates');
+$twig = new \Twig\Environment($loader);
+$container->share($twig);
+
+/**
+ * Process the request
+ */
+
 $app = $container->make(App::class);
 
 $response = $app->processRequest($request);

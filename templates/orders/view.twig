@@ -1,0 +1,14 @@
+<a href="/orders">View all</a>
+
+<table>
+    <tr>
+        <td>ID</td>
+        <td>{{ order.id }}</td>
+    </tr>
+    <tr>
+        <td>State</td>
+        <td>{{ order.state }}</td>
+    </tr>
+</table>
+
+<a href="/orders/view/{{ order.id }}/dispatch">Dispatch</a>
