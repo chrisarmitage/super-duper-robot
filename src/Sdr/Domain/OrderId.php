@@ -16,7 +16,8 @@ class OrderId
      * @param null|string $id
      * @throws \Exception
      */
-    protected function __construct(?string $id) {
+    protected function __construct(?string $id)
+    {
         $this->id = $id ?: Uuid::uuid4()->toString();
     }
 
@@ -25,7 +26,8 @@ class OrderId
      * @return OrderId
      * @throws \Exception
      */
-    public static function create(?string $id) {
+    public static function create(?string $id)
+    {
         return new static($id);
     }
 
