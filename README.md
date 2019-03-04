@@ -1,5 +1,10 @@
 # An experiment in application architecture
 
+![Version: Alpha](https://img.shields.io/badge/version-alpha-red.svg)
+[![Build Status](https://travis-ci.com/chrisarmitage/super-duper-robot.svg?branch=master)](https://travis-ci.com/chrisarmitage/super-duper-robot)
+[![Coverage Status](https://img.shields.io/coveralls/chrisarmitage/super-duper-robot.svg)](https://coveralls.io/r/chrisarmitage/super-duper-robot)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/chrisarmitage/super-duper-robot/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/chrisarmitage/super-duper-robot/?branch=master)
+
 I've been studying application architecture for a few years now, from basic DI up to CQRS and Event Sourcing. These all look like great patterns, but there aren't many examples of the code being used in real-world environments. I want to see if it's possible to create a commercially-viable product using modern design patterns.
 
 ## The Plan
