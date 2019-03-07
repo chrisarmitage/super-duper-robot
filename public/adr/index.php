@@ -41,6 +41,10 @@ Type::addType(
     'OrderId',
     \Sdr\DoctrineOrderId::class
 );
+Type::addType(
+    'SkuCode',
+    \Sdr\DoctrineSkuCode::class
+);
 
 $config = Setup::createXMLMetadataConfiguration(
     [ __DIR__ . '/../../src/Sdr/Domain/doctrine-entities'],
