@@ -13,7 +13,7 @@ class SkuReadRepository
     protected $pdo;
 
     /**
-     * OrderReadRepository constructor.
+     * SkuReadRepository constructor.
      * @param \PDO $pdo
      */
     public function __construct(\PDO $pdo)
@@ -42,5 +42,25 @@ class SkuReadRepository
         }
 
         return $skus;
+    }
+
+    /**
+     * @param SkuCode $skuCode
+     * @return Sku
+     */
+    public function get(SkuCode $skuCode) : Sku
+    {
+        $sth = $this->pdo->prepare('SELECT * FROM skus WHERE code = :code LIMIT 1');
+        $sth->execute(['code' => (string) $skuCode]);
+        $row = $sth->fetch(\PDO::FETCH_ASSOC);
+
+        $sku = new Sku(
+            SkuCode::create($row['code']),
+            $row['title'],
+            $row['price'],
+            null
+        );
+
+        return $sku;
     }
 }

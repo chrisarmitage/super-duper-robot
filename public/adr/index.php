@@ -24,6 +24,7 @@ $container->share(
         ->addRoute('/orders/view/{id}', 'Orders\\View')
         ->addRoute('/orders/view/{id}/dispatch', 'Orders\\Dispatch')
         ->addRoute('/skus', 'Skus\\Index')
+        ->addRoute('/skus/view/{code}', 'Skus\\View')
 );
 
 $container->alias(\Framework\Router::class, \Framework\Router\RegexRouter::class);
