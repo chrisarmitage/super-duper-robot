@@ -23,6 +23,8 @@ $container->share(
         ->addRoute('/orders/create', 'Orders\\Create')
         ->addRoute('/orders/view/{id}', 'Orders\\View')
         ->addRoute('/orders/view/{id}/dispatch', 'Orders\\Dispatch')
+        ->addRoute('/skus', 'Skus\\Index')
+        ->addRoute('/skus/view/{code}', 'Skus\\View')
 );
 
 $container->alias(\Framework\Router::class, \Framework\Router\RegexRouter::class);
@@ -40,6 +42,10 @@ $container->share($dbh);
 Type::addType(
     'OrderId',
     \Sdr\DoctrineOrderId::class
+);
+Type::addType(
+    'SkuCode',
+    \Sdr\DoctrineSkuCode::class
 );
 
 $config = Setup::createXMLMetadataConfiguration(

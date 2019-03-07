@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% block title %}View Skus{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for sku in skus %}
+
+                <div class="col s6 m3">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">{{ sku.title }}</span>
+                            <p>Excerpt / brief description of the product</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="/skus/view/{{ sku.code }}">View</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}
