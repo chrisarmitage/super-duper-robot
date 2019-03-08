@@ -5,19 +5,35 @@
 {% block content %}
     <a href="/skus" class="waves-effect waves-light btn-flat">View all</a>
 
-    <table>
-        <tr>
-            <td>Title</td>
-            <td>{{ sku.title }}</td>
-        </tr>
-        <tr>
-            <td>Code</td>
-            <td>{{ sku.code }}</td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td>{{ sku.price }}</td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col s9">
+            <table>
+                <tr>
+                    <td>Title</td>
+                    <td>{{ sku.title }}</td>
+                </tr>
+                <tr>
+                    <td>Code</td>
+                    <td>{{ sku.code }}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{ sku.price }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col m3">
+            <p>Basket</p>
+            <p>Total: <strong>{{ basket.total }}</strong></p>
+            <table>
+                {% for item in basket.items %}
+                    <tr>
+                        <td>{{ item.skuCode }}</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 
 {% endblock %}
