@@ -21,10 +21,16 @@ class IndexResponder
         $this->twig = $twig;
     }
 
-    public function respond($payload) : Response
+    public function respond($payload, $basket) : Response
     {
         return new Response(
-            $this->twig->render('skus/index.twig', ['skus' => $payload]),
+            $this->twig->render(
+                'skus/index.twig',
+                [
+                    'skus' => $payload,
+                    'basket' => $basket,
+                ]
+            ),
             Response::HTTP_OK,
             [
                 'content-type' => 'text/html',

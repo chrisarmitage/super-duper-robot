@@ -4,6 +4,7 @@
 
 {% block content %}
     <div class="row">
+        <div class="col s9">
         {% for sku in skus %}
 
                 <div class="col s6 m3">
@@ -18,5 +19,20 @@
                     </div>
                 </div>
         {% endfor %}
+        </div>
+
+        <div class="col m3">
+            <p>Basket</p>
+            <p>Total: <strong>{{ basket.total }}</strong></p>
+            <table>
+                {% for item in basket.items %}
+                    <tr>
+                        <td>{{ item.skuCode }}</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
+
 {% endblock %}

@@ -25,6 +25,7 @@ $container->share(
         ->addRoute('/orders/view/{id}/dispatch', 'Orders\\Dispatch')
         ->addRoute('/skus', 'Skus\\Index')
         ->addRoute('/skus/view/{code}', 'Skus\\View')
+        ->addRoute('/basket/add/{code}', 'Basket\\Add')
 );
 
 $container->alias(\Framework\Router::class, \Framework\Router\RegexRouter::class);
@@ -46,6 +47,18 @@ Type::addType(
 Type::addType(
     'SkuCode',
     \Sdr\DoctrineSkuCode::class
+);
+Type::addType(
+    'BasketId',
+    \Sdr\DoctrineBasketId::class
+);
+Type::addType(
+    'SessionId',
+    \Sdr\DoctrineSessionId::class
+);
+Type::addType(
+    'BasketItemId',
+    \Sdr\DoctrineBasketItemId::class
 );
 
 $config = Setup::createXMLMetadataConfiguration(
@@ -73,6 +86,7 @@ $container->share($twig);
 /**
  * Process the request
  */
+session_start();
 
 $app = $container->make(App::class);
 

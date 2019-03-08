@@ -26,10 +26,16 @@ class ViewResponder
      * @param Sku $payload
      * @return Response
      */
-    public function respond($payload) : Response
+    public function respond($payload, $basket) : Response
     {
         return new Response(
-            $this->twig->render('skus/view.twig', ['sku' => $payload]),
+            $this->twig->render(
+                'skus/view.twig',
+                [
+                    'sku' => $payload,
+                    'basket' => $basket,
+                ]
+            ),
             Response::HTTP_OK,
             [
                 'content-type' => 'text/html',
