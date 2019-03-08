@@ -32,7 +32,7 @@
                 type="datetime"
         />
 
-        <one-to-many field="items" target-entity="BasketItem" mapped-by="basketId">
+        <one-to-many field="items" target-entity="BasketItem" mapped-by="basket" orphan-removal="true">
             <cascade>
                 <cascade-persist/>
             </cascade>

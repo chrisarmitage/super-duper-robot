@@ -3,6 +3,7 @@
 namespace Sdr\Domain;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Basket
 {
@@ -32,7 +33,7 @@ class Basket
     protected $modified;
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      */
     protected $items;
 
@@ -93,9 +94,9 @@ class Basket
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
-    public function getItems(): ArrayCollection
+    public function getItems(): Collection
     {
         return $this->items;
     }
@@ -109,5 +110,15 @@ class Basket
         $this->items->add($item);
 
         return $this;
+    }
+
+    public function removeItem(BasketItemId $basketItemId): void
+    {
+        /** @var BasketItem $item */
+        foreach ($this->getItems() as $item) {
+            if ($item->getId()->equals($basketItemId)) {
+                $this->items->removeElement($item);
+            }
+        }
     }
 }
