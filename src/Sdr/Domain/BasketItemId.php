@@ -34,4 +34,9 @@ class BasketItemId
     {
         return $this->id;
     }
+
+    public function equals(BasketItemId $other): bool
+    {
+        return $this->id === (string) $other;
+    }
 }

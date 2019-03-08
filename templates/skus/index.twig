@@ -29,6 +29,11 @@
                     <tr>
                         <td>{{ item.skuCode }}</td>
                         <td>{{ item.quantity }}</td>
+                        <td>
+                            <a href="/basket/remove/{{ item.id }}">
+                                <i class="material-icons">remove_circle</i>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

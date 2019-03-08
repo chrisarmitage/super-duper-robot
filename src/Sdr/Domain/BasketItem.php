@@ -39,6 +39,14 @@ class BasketItem
     }
 
     /**
+     * @return BasketItemId
+     */
+    public function getId(): BasketItemId
+    {
+        return $this->id;
+    }
+
+    /**
      * @return SkuCode
      */
     public function getSkuCode(): SkuCode
