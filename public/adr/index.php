@@ -47,6 +47,18 @@ Type::addType(
     'SkuCode',
     \Sdr\DoctrineSkuCode::class
 );
+Type::addType(
+    'BasketId',
+    \Sdr\DoctrineBasketId::class
+);
+Type::addType(
+    'SessionId',
+    \Sdr\DoctrineSessionId::class
+);
+Type::addType(
+    'BasketItemId',
+    \Sdr\DoctrineBasketItemId::class
+);
 
 $config = Setup::createXMLMetadataConfiguration(
     [ __DIR__ . '/../../src/Sdr/Domain/doctrine-entities'],

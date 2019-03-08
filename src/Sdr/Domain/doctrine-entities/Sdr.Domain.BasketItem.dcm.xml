@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+         https://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Sdr\Domain\BasketItem" table="basket_items">
+        <id name="id" type="BasketItemId" />
+        <field name="skuCode" column="sku_code" />
+        <field name="quantity" type="integer" />
+        <many-to-one field="basket" target-entity="Basket" inversed-by="items">
+            <join-column name="basket_id" referenced-column-name="id" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>
