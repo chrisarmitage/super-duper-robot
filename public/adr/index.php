@@ -25,6 +25,7 @@ $container->share(
         ->addRoute('/orders/view/{id}/dispatch', 'Orders\\Dispatch')
         ->addRoute('/skus', 'Skus\\Index')
         ->addRoute('/skus/view/{code}', 'Skus\\View')
+        ->addRoute('/basket/add/{code}', 'Basket\\Add')
 );
 
 $container->alias(\Framework\Router::class, \Framework\Router\RegexRouter::class);
@@ -85,6 +86,7 @@ $container->share($twig);
 /**
  * Process the request
  */
+session_start();
 
 $app = $container->make(App::class);
 
