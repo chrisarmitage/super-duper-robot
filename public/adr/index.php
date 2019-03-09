@@ -81,7 +81,8 @@ $container->alias(\Doctrine\ORM\EntityManagerInterface::class, EntityManager::cl
  * Initialise Twig
  */
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../templates');
-$twig = new \Twig\Environment($loader);
+$twig = new \Twig\Environment($loader, ['debug' => true]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 $container->share($twig);
 
 /**
