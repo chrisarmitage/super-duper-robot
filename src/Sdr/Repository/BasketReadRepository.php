@@ -2,9 +2,8 @@
 
 namespace Sdr\Repository;
 
-use Sdr\Domain\Basket;
-use Sdr\Domain\BasketId;
-use Sdr\Domain\BasketItem;
+use Sdr\Domain\Read\Basket;
+use Sdr\Domain\Read\BasketItem;
 use Sdr\Domain\BasketItemId;
 use Sdr\Domain\SessionId;
 use Sdr\Domain\SkuCode;
@@ -31,24 +30,14 @@ class BasketReadRepository
         $row = $sth->fetch(\PDO::FETCH_ASSOC);
 
         if ($row === false) {
-            $basket = new Basket(
-                BasketId::create(null),
-                new SessionId(session_id()),
-                new \DateTimeImmutable(),
-                new \DateTimeImmutable()
-            );
+            $basket = new Basket();
 
             return $basket;
         }
 
-        $basket = new Basket(
-            BasketId::create($row['id']),
-            new SessionId($row['session_id']),
-            new \DateTimeImmutable($row['created']),
-            new \DateTimeImmutable($row['modified'])
-        );
+        $basket = new Basket();
 
-        $sth = $this->pdo->prepare('SELECT * FROM basket_items WHERE basket_id = :id');
+        $sth = $this->pdo->prepare('SELECT * FROM basket_items AS bi JOIN skus AS s ON s.code = bi.sku_code WHERE basket_id = :id');
         $sth->execute(['id' => $row['id']]);
         $itemRows = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -56,9 +45,10 @@ class BasketReadRepository
             $basket->addItem(
                 new BasketItem(
                     BasketItemId::create($itemRow['id']),
-                    $basket,
                     SkuCode::create($itemRow['sku_code']),
-                    $itemRow['quantity']
+                    $itemRow['quantity'],
+                    $itemRow['price'],
+                    $itemRow['title']
                 )
             );
         }
