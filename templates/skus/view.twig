@@ -29,8 +29,9 @@
             <table>
                 {% for item in basket.items %}
                     <tr>
-                        <td>{{ item.skuCode }}</td>
+                        <td>{{ item.title }}</td>
                         <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
                         <td>
                             <a href="/basket/remove/{{ item.id }}">
                                 <i class="material-icons">remove_circle</i>
