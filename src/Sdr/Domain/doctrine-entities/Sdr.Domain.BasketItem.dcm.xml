@@ -7,7 +7,7 @@
 
     <entity name="Sdr\Domain\BasketItem" table="basket_items">
         <id name="id" type="BasketItemId" />
-        <field name="skuCode" column="sku_code" />
+        <field name="skuCode" column="sku_code" type="SkuCode" />
         <field name="quantity" type="integer" />
         <many-to-one field="basket" target-entity="Basket" inversed-by="items">
             <join-column name="basket_id" referenced-column-name="id" />
