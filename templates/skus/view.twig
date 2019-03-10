@@ -40,6 +40,10 @@
                     </tr>
                 {% endfor %}
             </table>
+
+            {% if basket.items | length > 0 %}
+                <a href="/checkout" class="waves-effect waves-light btn">Checkout</a>
+            {% endif %}
         </div>
     </div>
 
