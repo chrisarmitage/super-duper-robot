@@ -48,4 +48,10 @@ class BasketWriteRepository
         $this->entityManager->persist($basket);
         $this->entityManager->flush();
     }
+
+    public function remove(Basket $basket) : void
+    {
+        $this->entityManager->remove($basket);
+        $this->entityManager->flush();
+    }
 }
