@@ -28,6 +28,12 @@
             name="total"
             type="integer"
             nullable="false"
-    />
+        />
+
+        <one-to-many field="items" target-entity="OrderItem" mapped-by="order">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>

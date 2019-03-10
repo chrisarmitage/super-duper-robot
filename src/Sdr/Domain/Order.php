@@ -2,6 +2,9 @@
 
 namespace Sdr\Domain;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Order
 {
     /**
@@ -25,6 +28,12 @@ class Order
     protected $total;
 
     /**
+     * @var Collection
+     */
+    protected $items;
+
+
+    /**
      * Order constructor.
      * @param OrderId  $id
      * @param int|null $customerId
@@ -37,6 +46,7 @@ class Order
         $this->customerId = $customerId;
         $this->state = $state;
         $this->total = $total;
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -74,6 +84,25 @@ class Order
     public function changeState(string $state) : self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param OrderItem $item
+     * @return $this
+     */
+    public function addItem(OrderItem $item) : self
+    {
+        $this->items->add($item);
 
         return $this;
     }

@@ -61,6 +61,11 @@ Type::addType(
     'BasketItemId',
     \Sdr\DoctrineBasketItemId::class
 );
+Type::addType(
+    'OrderItemId',
+    \Sdr\DoctrineOrderItemId::class
+);
+
 
 $config = Setup::createXMLMetadataConfiguration(
     [ __DIR__ . '/../../src/Sdr/Domain/doctrine-entities'],
