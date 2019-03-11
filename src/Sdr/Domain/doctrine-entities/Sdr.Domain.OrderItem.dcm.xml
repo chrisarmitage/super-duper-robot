@@ -8,6 +8,7 @@
     <entity name="Sdr\Domain\OrderItem" table="order_items">
         <id name="id" type="OrderItemId" />
         <field name="skuCode" column="sku_code" />
+        <field name="skuTitle" column="sku_title" />
         <field name="quantity" type="integer" />
         <field name="lineTotal" column="line_total" type="integer" />
         <many-to-one field="order" target-entity="Order" inversed-by="items">
