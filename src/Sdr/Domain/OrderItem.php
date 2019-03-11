@@ -20,6 +20,11 @@ class OrderItem
     protected $skuCode;
 
     /**
+     * @var string
+     */
+    protected $skuTitle;
+
+    /**
      * @var int
      */
     protected $quantity;
@@ -33,6 +38,7 @@ class OrderItem
      * @param OrderItemId $id
      * @param Order       $order
      * @param SkuCode     $skuCode
+     * @param string      $skuTitle
      * @param int         $quantity
      * @param int         $lineTotal
      */
@@ -40,12 +46,14 @@ class OrderItem
         OrderItemId $id,
         Order $order,
         SkuCode $skuCode,
+        string $skuTitle,
         int $quantity,
         int $lineTotal
     ) {
         $this->id = $id;
         $this->order = $order;
         $this->skuCode = $skuCode;
+        $this->skuTitle = $skuTitle;
         $this->quantity = $quantity;
         $this->lineTotal = $lineTotal;
     }
@@ -64,6 +72,14 @@ class OrderItem
     public function getSkuCode(): SkuCode
     {
         return $this->skuCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSkuTitle(): string
+    {
+        return $this->skuTitle;
     }
 
     /**

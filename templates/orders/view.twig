@@ -6,6 +6,7 @@
     <a href="/orders" class="waves-effect waves-light btn-flat">View all</a>
     <a href="/orders/view/{{ order.id }}/dispatch" class="waves-effect waves-light btn">Dispatch</a>
 
+    <h3>Summary</h3>
     <table>
         <tr>
             <td>ID</td>
@@ -15,6 +16,17 @@
             <td>State</td>
             <td>{{ order.state }}</td>
         </tr>
+    </table>
+
+    <h3>Items</h3>
+    <table>
+        {% for item in order.items %}
+            <tr>
+                <td>{{ item.skuTitle }} [{{ item.skuCode }}]</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.lineTotal }}</td>
+            </tr>
+        {% endfor %}
     </table>
 
 {% endblock %}

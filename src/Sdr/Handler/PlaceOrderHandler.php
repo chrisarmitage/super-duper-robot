@@ -3,15 +3,21 @@
 namespace Sdr\Handler;
 
 use Sdr\Command\PlaceOrderCommand;
-use Sdr\Domain\BasketItem;
 use Sdr\Domain\Order;
 use Sdr\Domain\OrderItem;
 use Sdr\Domain\OrderItemId;
+use Sdr\Domain\Read\BasketItem;
+use Sdr\Repository\BasketReadRepository;
 use Sdr\Repository\BasketWriteRepository;
 use Sdr\Repository\OrderWriteRepository;
 
 class PlaceOrderHandler
 {
+    /**
+     * @var BasketReadRepository
+     */
+    protected $basketReadRepository;
+
     /**
      * @var BasketWriteRepository
      */
@@ -23,18 +29,23 @@ class PlaceOrderHandler
     protected $orderWriteRepository;
 
     /**
+     * @param BasketReadRepository $basketReadRepository
      * @param BasketWriteRepository $basketWriteRepository
      * @param OrderWriteRepository  $orderWriteRepository
      */
-    public function __construct(BasketWriteRepository $basketWriteRepository, OrderWriteRepository $orderWriteRepository)
-    {
+    public function __construct(
+        BasketReadRepository $basketReadRepository,
+        BasketWriteRepository $basketWriteRepository,
+        OrderWriteRepository $orderWriteRepository
+    ) {
+        $this->basketReadRepository = $basketReadRepository;
         $this->basketWriteRepository = $basketWriteRepository;
         $this->orderWriteRepository = $orderWriteRepository;
     }
 
     public function handle(PlaceOrderCommand $command) : void
     {
-        $basket = $this->basketWriteRepository->getBySession($command->getSessionId());
+        $basket = $this->basketReadRepository->getBySession($command->getSessionId());
 
         $order = new Order(
             $command->getOrderId(),
@@ -50,13 +61,18 @@ class PlaceOrderHandler
                     OrderItemId::create(null),
                     $order,
                     $basketItem->getSkuCode(),
+                    $basketItem->getTitle(),
                     $basketItem->getQuantity(),
-                    0
+                    $basketItem->getPrice()
                 )
             );
         }
 
         $this->orderWriteRepository->add($order);
-        $this->basketWriteRepository->remove($basket);
+        $this->basketWriteRepository->remove(
+            $this->basketWriteRepository->getBySession(
+                $command->getSessionId()
+            )
+        );
     }
 }
