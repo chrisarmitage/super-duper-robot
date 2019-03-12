@@ -8,22 +8,22 @@ SDR will cater for the following usecases:
 
 ## Customer
 
-- A Customer can use FH to SearchProducts
-- A Customer can use FH to BrowseProducts
-- A Customer can use FH to ViewProduct
-- A Customer can use FH to CreateCustomerAccount
-- A Customer can use FH to UpdateCustomerAccount
-- A Customer can use FH to CreateOrder
-- A Customer can use FH to ViewOrder
+- [ ] A Customer can use FH to SearchProducts
+- [x] A Customer can use FH to BrowseProducts
+- [x] A Customer can use FH to ViewProduct
+- [ ] A Customer can use FH to CreateCustomerAccount
+- [ ] A Customer can use FH to UpdateCustomerAccount
+- [x] A Customer can use FH to CreateOrder
+- [ ] A Customer can use FH to ViewOrder
 
 ## Business
 
-- A Business can use BH to CreateProduct
-- A Business can use BH to UpdateProduct
-- A Business can use BH to DeleteProduct
-- A Business can use BH to CreateCustomerAccount
-- A Business can use BH to UpdateCustomerAccount
-- A Business can use BH to DeleteCustomerAccount
-- A Business can use BH to ViewOrder
-- A Business can use BH to UpdateOrder
-- A Business can use BH to ProcessOrder
+- [ ] A Business can use BH to CreateProduct
+- [ ] A Business can use BH to UpdateProduct
+- [ ] A Business can use BH to DeleteProduct
+- [ ] A Business can use BH to CreateCustomerAccount
+- [ ] A Business can use BH to UpdateCustomerAccount
+- [ ] A Business can use BH to DeleteCustomerAccount
+- [x] A Business can use BH to ViewOrder
+- [ ] A Business can use BH to UpdateOrder
+- [ ] A Business can use BH to ProcessOrder
