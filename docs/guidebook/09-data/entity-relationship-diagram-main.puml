@@ -1,7 +1,7 @@
 @startuml
 
 center header
-Basic Entity-Relationship Diagram for SDR
+Main Entity-Relationship Diagram for SDR
 endheader
 
 hide circle
@@ -10,17 +10,21 @@ hide empty members
 !define pk(x) x <b>(PK)</b>
 !define fk(x) x <b>(FK)</b>
 
+skinparam class {
+	backgroundColor<<external>> LightCyan
+	backgroundColor<<incomplete>> LightPink
+}
+
 ' ##### Customer Aggregate
 
 package "Customer Aggregate" {
-    entity Customer {
+    entity Customer <<incomplete>> {
         pk(id)
-        --
         Name
         Email
     }
 
-    entity Address {
+    entity Address <<incomplete>> {
         fk(Customer)
         Name
         Street
@@ -37,21 +41,23 @@ Customer ||--o{ Address
 
 package "Order Aggregate" {
     entity Order {
-        pk(id)
+        pk(OrderId)
         fk(Customer)
         State
         Total
     }
 
-    entity OrderLine {
+    entity OrderItem {
+        pk(OrderItemId)
         fk(Order)
-        fk(Sku)
+        SkuCode
+        SkuTitle
         Quantity
-        Price
+        LineTotal
     }
 }
 
-Order ||--|{ OrderLine
+Order ||--|{ OrderItem
 
 
 
@@ -74,7 +80,5 @@ package "Product Aggregate" {
 ' ##### Aggregate Links
 
 Customer ||-o{ Order
-
-OrderLine }o-|| Sku
 
 @enduml
