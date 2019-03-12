@@ -11,3 +11,9 @@ There are three main write aggregates, covering Customers, Orders and Products.
 Additional aggregates include the Basket.
 
 ![Entity-Relationship Diagram](./entity-relationship-diagram-additional.png "Entity-Relationship Diagram")
+
+## Read
+
+Currently, only the Basket has a read model (including the price and title from Sku)
+
+![Entity-Relationship Diagram](./entity-relationship-diagram-read.png "Entity-Relationship Diagram")

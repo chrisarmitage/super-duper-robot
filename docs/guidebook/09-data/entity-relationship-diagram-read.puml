@@ -1,0 +1,36 @@
+@startuml
+
+center header
+Read Entity-Relationship Diagram for SDR
+endheader
+
+hide circle
+hide empty members
+
+!define pk(x) x <b>(PK)</b>
+!define fk(x) x <b>(FK)</b>
+
+skinparam class {
+	backgroundColor<<external>> LightCyan
+	backgroundColor<<incomplete>> LightPink
+}
+
+' ##### Basket Aggregate
+
+package "Basket Aggregate" {
+    entity Basket {
+        Total
+    }
+
+    entity BasketItem {
+        pk(BasketItemId)
+        SkuCode
+        Title
+        Quantity
+        Price
+    }
+}
+Basket ||--o{ BasketItem
+
+
+@enduml
