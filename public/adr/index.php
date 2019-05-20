@@ -28,6 +28,7 @@ $container->share(
         ->addRoute('/basket/add/{code}', 'Basket\\Add')
         ->addRoute('/basket/remove/{basketItemId}', 'Basket\\Remove')
         ->addRoute('/checkout', 'Checkout')
+        ->addRoute('/customer/sign-up', 'Customer\\SignUp')
 );
 
 $container->alias(\Framework\Router::class, \Framework\Router\RegexRouter::class);
